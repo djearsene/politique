@@ -1,0 +1,99 @@
+Model conceptuel de donnée pour base politique
+<mcd>
+		<entités>
+	candidat
+		- can_id (identifiant)
+		- can_nom (varchar)
+		- can_prénom (varchar)
+		- can_age (int)
+
+électeur
+		- ele_id (identifiant)
+		- ele_nom (varchar)
+
+	partie politique 
+		- par_nom (varchar)
+		- par_date_de_création (date)
+		- par_description (varchar)
+		- par_programme_politique (varchar)
+		- par_logo (varchar)
+
+	Pays
+		- pay_id (identifiant)
+		- pay_nom (varchar)
+
+	ville
+		- vil_id (identifiant)
+		- vil_nom (varchar)
+
+	bureau de vote
+		- bur_id (identifiant)
+		- bur_vote (varchar)
+		- bur_nombre_inscrits (int)
+
+	
+		</entités>
+
+		<association>
+
+	militer partie_politique:
+		- candidat 0,1
+		- partie politique 1,n;
+		- électeur 0,1
+		- partie_politique 1,n
+
+localiser bureau_de_vote:
+		- bureau_de_vote 1,1
+		- ville 1,n
+
+	situer ville:
+		- ville 1,1
+		- pays 1,n
+
+	voter candidats:
+		- électeur 0,n
+		- candidat 0,n
+		</association>
+</mcd> 
+
+	<mld>
+		<table>
+	candidat
+		- can_id (pk)
+		- can_nom (varchar)
+		- can_préénom (varchar)
+		- can_age (int)
+		- can_partie_politique (fk)
+		- can_vote (fk)
+
+	électeur
+		- ele_id (pk)
+		- ele_nom (varchar)
+		- ele_partie_politique (fk)
+
+	bureau_de_vote
+		- bur_id (pk)
+		- bur_nom (varchar)
+		- bur_ville (fk)
+
+	ville
+		- vil_id (pk)
+		- vil_nom (varchar)
+
+	pays
+		- pay_nom (varchar)
+
+
+	vote 
+		- vot_id (identifiant)
+		- vot_date_debut (date)
+		- vot_date_fin (date)
+		- vot_nombre_candidat (int)
+		- vot_nombre_total_de_participant (int)
+		- vot_suffrage_exprimer (int)
+		- vot_bulletin_null (int)
+		- vot_bulletin_blanc (int)
+		- vot_taux_abstention (int)
+		- vot_taux_participation
+		</table>
+</mld>

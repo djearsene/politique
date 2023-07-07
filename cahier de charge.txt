@@ -1,0 +1,3 @@
+Je crée une application dans laquelle des candidats se présentent à des élections locales dans un pays.
+L’application doit afficher les résultats de chaque candidat des élections locales dans les circonscriptions où les candidats se sont présentées.
+Les résultats dans une circonscription doivent être présentés de façon croissante
